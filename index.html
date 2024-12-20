@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div id="modal" class="invisible"><p>fetching data...</p></div>
+    <nav>
+        <div id="logo">Weather App</div>
+        <form>
+            <input type="search" placeholder="Location">
+            <button type="button">Location</button>
+        </form>
+    </nav>
+    <main>
+        <header id="header">
+            <h1></h1>
+            <p id="description"></p>
+        </header>
+        <div id="temp-container">
+            <section id="main-card">
+                <header>
+                    <img src="" id="today-image">
+                    <h2></h2>
+                </header>
+                <div id="card-body">
+                    <div id="temp">
+                        <p id="precipitation"></p>
+                        <p id="humidity"></p>
+                        <p id="wind"></p>
+                    </div>
+                    <div id="min-max">
+                        <div id="min"></div>
+                        <div id="max"></div>
+                    </div>
+                </div>
+            </section>
+            <section id="days"></section>
+        </div>
+        
+    </main>
+    <footer>Icons from iconixar</footer>
+    <script src="index.js" type="module"></script>
+</body>
+</html>
