@@ -26,9 +26,32 @@ function selectImage(weather) {
         return './icons/partcloudyrain.png';
     } else if (weather === 'Rain, Overcast') {
         return './icons/rainy.png';
-    }else if (weather === 'Rain') {
+    } else if (weather === 'Rain') {
         return './icons/rainy.png';
+    } else if (weather.includes('Snow')) {
+        return './icons/snowy.png';
     }
+}
+
+function extractDay(date) {
+    const parsedDate = Date.parse(date);
+    const dateInstance = new Date(parsedDate);
+    const dateNumber = dateInstance.getDay();
+    if (dateNumber === 0) {
+        return 'Sun';
+    } if (dateNumber === 1) {
+        return 'Mon';
+    } if (dateNumber === 2) {
+        return 'Tue';
+    } if (dateNumber === 3) {
+        return 'Wed';
+    } if (dateNumber === 4) {
+        return 'Thu';
+    } if (dateNumber === 5) {
+        return 'Fri';
+    } if (dateNumber === 6) {
+        return 'Sat';
+    } 
 }
 
 function createDays(data) {
@@ -39,7 +62,7 @@ function createDays(data) {
 
         const dayName = document.createElement('div');
         dayName.setAttribute('class', 'day-name');
-        dayName.innerText = data.days[i].datetime;
+        dayName.innerText = extractDay(data.days[i].datetime);
         day.appendChild(dayName);
 
         const dayImage = document.createElement('img');
@@ -86,7 +109,17 @@ function populateApp(location) {
     })
 }
 
-searchButton.addEventListener('click', () => {populateApp(searchInput.value)});
+searchButton.addEventListener('click', () => {
+    populateApp(searchInput.value);
+    searchInput.value = '';
+});
+searchInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        populateApp(searchInput.value);
+        searchInput.value = '';
+    }
+})
 
 
 
